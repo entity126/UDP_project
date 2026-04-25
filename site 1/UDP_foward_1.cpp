@@ -2,13 +2,14 @@
 #include <cstring>
 #include <fstream>
 #include <string>
+#include "../UDP_packet.h"
+#include "../site connection/transport_line.cpp"
 
 using namespace std;
 
 class extract{
     public:
-        //class variables
-
+        
         string extract_text;
         int desination_port, source_port, text_lenght;
         
@@ -41,14 +42,6 @@ class inject{
 
 class split_text{
     public:
-    struct UDP_packet
-    {
-        int source_port;
-        int desination_port;
-        int text_lenght;
-        string text;
-    };
-    
     UDP_packet packet1;
     UDP_packet packet2;
     UDP_packet packet3;
@@ -71,10 +64,6 @@ class split_text{
 
         packet3.text = p3;
         packet3.text_lenght = p3.length();
-
-        cout << "Packet 1: " << packet1.text << " Length: " << packet1.text_lenght << endl;
-        cout << "Packet 2: " << packet2.text << " Length: " << packet2.text_lenght << endl;
-        cout << "Packet 3: " << packet3.text << " Length: " << packet3.text_lenght << endl;
         
     }
 };
@@ -83,7 +72,10 @@ int main(){
     ext.read_text();
     
     split_text splitter;
-    splitter.split(ext); 
+    splitter.split(ext);
+
+    transport t;
+    t.receive_packets(splitter.packet1, splitter.packet2, splitter.packet3);
     
     return 0;
 }
