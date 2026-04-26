@@ -2,8 +2,7 @@
 #include <cstring>
 #include <fstream>
 #include <string>
-#include "../UDP_packet.h"
-#include "../site connection/transport_line.cpp"
+#include "../site connection/transport_line.h"
 
 using namespace std;
 

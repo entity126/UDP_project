@@ -1,23 +1,13 @@
-#include <iostream>
-#include "../UDP_packet.h"
+#include "transport_line.h"
 
-using namespace std;
+int main() {
+    transport t;
+    UDP_packet packet1, packet2, packet3;
 
-class transport {
-    public:
-    void receive_packets(UDP_packet packet1 , UDP_packet packet2, UDP_packet packet3) {
-        cout << "\n--- Packets received at transport_line ---" << endl;
-        cout << "Received Packet 1: " << packet1.text <<endl;
-        cout << "Received Packet 2: " << packet2.text <<endl;
-        cout << "Received Packet 3: " << packet3.text << endl;
-     
-    }
+    t.receive_packets(packet1, packet2, packet3);
 
-    void send_packets(UDP_packet packet1 , UDP_packet packet2, UDP_packet packet3) {
-       
-    }
-  
-};
+    return 0;
+}
 
 int main() {
     transport t;
